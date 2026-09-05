@@ -1,0 +1,88 @@
+{
+  "archive": {
+    "sha256": "a1d0f1e781121280f2d69ccf4ce7e5e933d9c60f8ffa4ccd277dea878f8eb58c",
+    "bytes": 673022,
+    "entries": 1000,
+    "directories": 0,
+    "uncompressed_bytes": 1002000,
+    "crc_all_pass": true
+  },
+  "file_count": 1000,
+  "exact_byte_group_counts": [
+    999,
+    1
+  ],
+  "grouping_method": "Counter keyed by complete bytes values; SHA-256 is recorded separately, not used to determine equality.",
+  "sha256_group_counts": [
+    999,
+    1
+  ],
+  "baseline": {
+    "sha256": "823a2e34f63c5d5f30a27733976df5a1ab57feaab505f40d95d3dd3fefa425cc",
+    "count": 999,
+    "bytes": 1002
+  },
+  "baseline_matches_pi_truncated_at_1000_decimals": true,
+  "pi_verification": "Gauss-Legendre algorithm, Decimal precision 1120, 13 iterations, first 1000 decimal digits",
+  "all_ascii": true,
+  "all_strict_utf8": true,
+  "all_sizes": [
+    1002
+  ],
+  "all_byte_values": [
+    46,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57
+  ],
+  "all_no_bom": true,
+  "all_newline_byte_counts": [
+    [
+      0,
+      0
+    ]
+  ],
+  "all_decimal_digits": true,
+  "file_names_expected": true,
+  "duplicate_file_names": [],
+  "differences": [
+    {
+      "name": "file_0042.txt",
+      "sha256": "bb4069270bb05a24bcb59de01c0a0e18539e336ad5d377d0b848a0ba69f87645",
+      "changed_byte_count": 2,
+      "changes": [
+        {
+          "byte_offset_zero_based": 41,
+          "byte_position_one_based": 42,
+          "line_one_based": 1,
+          "column_one_based": 42,
+          "decimal_digit_one_based": 40,
+          "before_ascii": "1",
+          "after_ascii": "4",
+          "before_hex": "0x31",
+          "after_hex": "0x34"
+        },
+        {
+          "byte_offset_zero_based": 42,
+          "byte_position_one_based": 43,
+          "line_one_based": 1,
+          "column_one_based": 43,
+          "decimal_digit_one_based": 41,
+          "before_ascii": "6",
+          "after_ascii": "2",
+          "before_hex": "0x36",
+          "after_hex": "0x32"
+        }
+      ],
+      "context_before": "38327950288419716939937510582097",
+      "context_after": "38327950288419742939937510582097"
+    }
+  ]
+}

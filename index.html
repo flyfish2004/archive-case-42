@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111512">
+  <meta name="description" content="Исследование test1.zip: из 1000 файлов отличается только file_0042.txt. Два байта, точное сравнение и воспроизводимые доказательства.">
+  <title>Дело № 42 — один файл из тысячи</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#verdict">К результату исследования</a>
+  <header class="header wrap">
+    <a class="brand" href="#" aria-label="Дело номер 42, начало"><span class="brand-icon">≠</span> БЮРО РАЗЛИЧИЙ<span class="brand-small"> / 001</span></a>
+    <nav aria-label="Основная навигация"><a href="#evidence">Улики</a><a href="#method">Метод</a><a class="nav-download" href="downloads/report.json" download>Отчёт <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main>
+    <section class="hero wrap" id="verdict" aria-labelledby="main-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="status-dot"></span> ИССЛЕДОВАНИЕ ЗАВЕРШЕНО <span class="muted">/ TEST1.ZIP</span></div>
+        <h1 id="main-title">Один из тысячи.<br><span>Два байта разницы.</span></h1>
+        <p class="hero-description">999 файлов совпадают до последнего байта.<br>В <a class="inline-file" href="#evidence">file_0042.txt</a> последовательность <code>16</code> заменена на <code>42</code>.<br class="desktop-br"> Остальное содержимое идентично.</p>
+        <a class="primary-button" href="#evidence">Рассмотреть отличие <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="specimen" aria-label="Найден отличающийся файл номер 42">
+        <div class="specimen-top mono">ОБЪЕКТ ИССЛЕДОВАНИЯ <span>№ 0042</span></div>
+        <div class="specimen-number" aria-hidden="true">42<span class="crosshair crosshair-a">+</span><span class="crosshair crosshair-b">+</span></div>
+        <div class="specimen-bottom"><span class="mono">file_0042.txt</span><span class="tag">ОТЛИЧАЕТСЯ</span></div>
+      </div>
+    </section>
+    <div class="stats-bar wrap" aria-label="Итоги исследования">
+      <div><strong>1 000</strong><span>файлов проверено</span></div>
+      <div><strong>999</strong><span>полностью идентичны</span></div>
+      <div><strong class="lime">1</strong><span>отличающийся файл</span></div>
+      <div><strong>2 <small>байта</small></strong><span>заменены в одной строке</span></div>
+    </div>
+
+    <section class="map-section wrap" aria-labelledby="map-title">
+      <div class="section-heading"><div><span class="section-index mono">01 / ОБЩАЯ КАРТИНА</span><h2 id="map-title">Тысяча файлов. Одна аномалия.</h2></div><span class="map-count mono">0001 — 1000</span></div>
+      <div class="map-panel">
+        <div class="map-toolbar"><span><i class="legend-dot normal-dot"></i> Совпадают <b>999</b></span><span><i class="legend-dot abnormal-dot"></i> Отличается <b>1</b></span><a href="#evidence" class="locate-link">Найден: № 0042 <span aria-hidden="true">↗</span></a></div>
+        <div id="file-map" class="file-map" role="img" aria-label="Карта 1000 файлов: 999 серых ячеек идентичны, салатовая ячейка номер 42 отличается."></div>
+        <div class="map-caption"><span>Одна ячейка — один файл. Порядок слева направо, сверху вниз.</span><span class="mono">100% ПРОВЕРЕНО</span></div>
+      </div>
+    </section>
+
+    <section class="evidence-section wrap" id="evidence" aria-labelledby="evidence-title">
+      <div class="section-heading"><div><span class="section-index mono">02 / ВЕЩЕСТВЕННОЕ ДОКАЗАТЕЛЬСТВО</span><h2 id="evidence-title">Вот эти два символа.</h2></div><span class="pill">Строка 1 · столбцы 42–43</span></div>
+      <div class="diff-panel">
+        <div class="diff-toolbar"><span class="mono">ФРАГМЕНТ СОДЕРЖИМОГО</span><div class="segmented" role="group" aria-label="Формат сравнения"><button class="active" id="text-mode" type="button" aria-pressed="true">Текст</button><button id="hex-mode" type="button" aria-pressed="false">HEX</button></div></div>
+        <div class="diff-row"><div class="diff-label"><span class="marker">−</span><div><strong>Большинство</strong><span>file_0001.txt · эталон из группы 999</span></div></div><div class="diff-code" id="baseline-context"><span class="ellipsis">…</span>383279502884197<mark class="removed">16</mark>939937510582097<span class="ellipsis">…</span></div></div>
+        <div class="diff-row changed-row"><div class="diff-label"><span class="marker plus">+</span><div><strong>file_0042.txt</strong><span>Единственный отличающийся файл</span></div></div><div class="diff-code" id="anomaly-context"><span class="ellipsis">…</span>383279502884197<mark class="added">42</mark>939937510582097<span class="ellipsis">…</span></div></div>
+        <div class="diff-footer"><span><span class="tiny-line"></span> Выделено только изменение. Общие цифры сохранены.</span><button class="text-button" id="show-full" type="button" aria-expanded="false" aria-controls="full-comparison">Показать все 1002 символа <span aria-hidden="true">+</span></button></div>
+        <div id="full-comparison" class="full-comparison" hidden><p>Полное содержимое: выделены столбцы 42 и 43. Переносы ниже добавлены только для удобства чтения — в исходных файлах их нет.</p><h3>Большинство · file_0001.txt</h3><code id="full-baseline"></code><h3>file_0042.txt</h3><code id="full-anomaly"></code></div>
+      </div>
+      <div class="evidence-details"><div><h3>Точное положение</h3><p>Две замены, без вставок и удалений. Нумерация столбцов начинается с 1, байтовых смещений — с 0.</p><div class="coordinates"><span>Смещение в байтах</span><strong class="mono">41, 42</strong><span>Столбец в строке 1</span><strong class="mono">42, 43</strong><span>Цифра после точки</span><strong class="mono">40, 41</strong></div></div><div><h3>Разница на уровне байтов</h3><table class="byte-table"><caption class="sr-only">Два изменённых байта и их шестнадцатеричные значения</caption><thead><tr><th>Смещение</th><th>Было</th><th>Стало</th></tr></thead><tbody><tr><th scope="row">41</th><td><b>1</b> <span>0x31</span></td><td><b class="lime">4</b> <span>0x34</span></td></tr><tr><th scope="row">42</th><td><b>6</b> <span>0x36</span></td><td><b class="lime">2</b> <span>0x32</span></td></tr></tbody></table></div></div>
+    </section>
+
+    <section class="pi-section wrap" aria-labelledby="pi-title"><div class="pi-symbol" aria-hidden="true">π</div><div><span class="section-index mono">ДОПОЛНИТЕЛЬНАЯ НАХОДКА</span><h2 id="pi-title">За цифрами скрывается π.</h2><p>Содержимое 999 одинаковых файлов — <strong>«3.» и первые 1000 знаков числа π после точки</strong>, обрезанные без округления. Совпадение проверено вычислением, а не узнаванием первых цифр.</p><p class="pi-method">Две независимые проверки: формула Чудновских и алгоритм Гаусса—Лежандра.</p></div><div class="pi-aside"><span class="mono">ЛЮБОПЫТНОЕ СОВПАДЕНИЕ</span><p>Файл № <b>42</b>.<br>Замена на <b>42</b>.<br>Начало в столбце <b>42</b>.</p><span>Намерение автора архива неизвестно.</span></div></section>
+
+    <section class="method-section wrap" id="method" aria-labelledby="method-title">
+      <div class="section-heading"><div><span class="section-index mono">03 / ХОД ИССЛЕДОВАНИЯ</span><h2 id="method-title">Не на глаз. Не по имени.</h2></div><p class="heading-note">Результат можно воспроизвести.<br>Каждый вывод опирается на содержимое.</p></div>
+      <ol class="method-steps"><li><span class="step-number mono">01</span><h3>Прочитать архив</h3><p>Проверить CRC всех записей ZIP и прочитать 1000 файлов как байты. Исходные файлы не изменять.</p><span class="step-result">1000 / 1000 · CRC в норме</span></li><li><span class="step-number mono">02</span><h3>Найти большинство</h3><p>Вычислить SHA-256 каждого файла. Два разных хеша образуют группы из 999 файлов и одного файла.</p><span class="step-result">Две группы · 999 + 1</span></li><li><span class="step-number mono">03</span><h3>Сравнить байты</h3><p>Проверить равенство полных последовательностей байтов. Сравнить исключение с эталоном из большей группы.</p><span class="step-result">Замена · 16 → 42</span></li><li><span class="step-number mono">04</span><h3>Перепроверить</h3><p>Независимо сгруппировать файлы по полному содержимому, без хешей. Отдельно проверить формат и вычислить π.</p><span class="step-result">Результаты совпали</span></li></ol>
+      <div class="checks"><h3>Что ещё проверено</h3><ul><li>Все файлы по 1002 байта</li><li>Только ASCII: цифры и точка</li><li>Нет BOM и скрытых символов</li><li>Нет пробелов, CR и LF</li><li>Все 1000 имён уникальны</li><li>999 файлов равны побайтово</li></ul><p>Байты корректно декодируются как UTF-8. По одним ASCII-символам нельзя определить, в какой кодировке файлы были первоначально сохранены.</p></div>
+      <div class="hash-section"><div class="hash-header"><h3>Контрольные суммы SHA-256</h3><span class="mono">ПОЛНЫЕ ЗНАЧЕНИЯ / 64 СИМВОЛА</span></div><div class="hash-row"><span>Большинство · 999 файлов</span><code>823a2e34f63c5d5f30a27733976df5a1ab57feaab505f40d95d3dd3fefa425cc</code><button type="button" class="copy-button" data-copy="823a2e34f63c5d5f30a27733976df5a1ab57feaab505f40d95d3dd3fefa425cc" aria-label="Скопировать SHA-256 большинства">Копировать</button></div><div class="hash-row"><span>file_0042.txt · 1 файл</span><code>bb4069270bb05a24bcb59de01c0a0e18539e336ad5d377d0b848a0ba69f87645</code><button type="button" class="copy-button" data-copy="bb4069270bb05a24bcb59de01c0a0e18539e336ad5d377d0b848a0ba69f87645" aria-label="Скопировать SHA-256 отличающегося файла">Копировать</button></div><details class="archive-hash"><summary>Контрольная сумма исходного архива test1.zip</summary><code>a1d0f1e781121280f2d69ccf4ce7e5e933d9c60f8ffa4ccd277dea878f8eb58c</code></details></div>
+    </section>
+
+    <section class="download-section wrap" id="reproduce" aria-labelledby="download-title"><div><span class="section-index mono">04 / ПРОВЕРЬТЕ САМИ</span><h2 id="download-title">Доказательства прилагаются.</h2><p>Исходный архив, полный отчёт и два независимых скрипта. Python 3.8+; внешние библиотеки не нужны.</p><a class="primary-button" href="downloads/evidence.zip" download>Скачать материалы <span aria-hidden="true">↓</span></a><span class="download-meta mono">ZIP · АРХИВ + ОТЧЁТ + СКРИПТЫ</span></div><div class="reproduce-panel"><div class="terminal-title"><span class="terminal-dot"></span><span class="mono">ВОСПРОИЗВЕСТИ РЕЗУЛЬТАТ</span></div><p>Распакуйте материалы и выполните:</p><code class="command">python analyze.py test1.zip --output report.json</code><div class="terminal-output mono"><span>Проверено файлов</span><b>1000</b><span>Идентичных</span><b>999</b><span>Отличается</span><b class="lime">file_0042.txt</b><span>Изменения</span><b class="lime">16 → 42</b></div><div class="download-links"><a href="downloads/report.json" download>Отчёт JSON ↗</a><a href="downloads/manifest.csv" download>Все файлы CSV ↗</a><a href="downloads/analyze.py" download>Скрипт Python ↗</a></div></div></section>
+    <section class="local-check wrap" aria-labelledby="local-check-title"><div><span class="section-index mono">ПРОВЕРКА В БРАУЗЕРЕ</span><h3 id="local-check-title">Сверьте свой экземпляр архива.</h3><p>Выберите исходный ZIP: браузер вычислит SHA-256 и сравнит его с исследованным архивом. Файл обрабатывается на вашем устройстве.</p></div><div class="local-check-control"><label class="secondary-button" for="archive-input">Выбрать test1.zip <span aria-hidden="true">↗</span></label><input type="file" id="archive-input" accept=".zip,application/zip"><p id="archive-status" role="status" aria-live="polite">Проверяется совпадение архива, а не содержимое произвольного ZIP.</p></div></section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="#"><span class="brand-icon">≠</span> БЮРО РАЗЛИЧИЙ</a><p>Дело № 42 · Все выводы проверяемы.</p><a href="#">К началу ↑</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><div class="noscript-note">Основной результат доступен без JavaScript. Для карты файлов, переключения HEX и локальной проверки включите JavaScript.</div></noscript>
+</body>
+</html>
